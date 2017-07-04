@@ -3,11 +3,11 @@ import { Grid, Row, Col } from 'react-bootstrap';
 import { MuiThemeProvider, Card, AppBar } from 'material-ui';
 import '../App.css';
 import RepoList from '../components/RepoList';
-import CommitList from '../components/RepoList';
+import UserCard from '../components/UserCard';
+import CommitList from '../components/CommitList';
 import injectTapEventPlugin from 'react-tap-event-plugin';
 
 injectTapEventPlugin();
-
 
 class App extends Component {
   render() {
@@ -39,14 +39,14 @@ class App extends Component {
                           <div className="margin-bottom">
                             <Card>
                               <div className="container">
-                                <CommitList />
+                                <UserCard />
                               </div>
                             </Card>
                           </div>
                         </Col>
                       </Row>
                       <Row>
-                        <Col md={12} xs={12}> 
+                        <Col md={12} xs={12}>
                           <Card>
                             <div className="container">
                               <CommitList />
