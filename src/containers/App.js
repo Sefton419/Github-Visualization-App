@@ -14,6 +14,12 @@ import { getRepos } from '../actions/index.js'
 injectTapEventPlugin();
 
 class App extends Component {
+
+  componentWillMount() {
+    const { getRepos } = this.props;
+    getRepos('sefton419');
+  }
+
   render() {
     return (
       <MuiThemeProvider>
