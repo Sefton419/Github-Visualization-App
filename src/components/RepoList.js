@@ -14,7 +14,6 @@ const RepoList = ({ repos }) => {
 		let key = 0;
 		return repos.data.map( repo => {
 			key++;
-			console.log('repo: ', repo)
 			return (
 				<div key={key}>
 					<RepoListItem repo={repo} />
@@ -25,12 +24,9 @@ const RepoList = ({ repos }) => {
 
 	return (
 		<Card>
-			<div className="container">
-			  <ListGroup>
-			  	Repositories
-			  	{ 'data' in repos ? renderRepoList(repos) : '' }
-			  </ListGroup>
-			</div>
+		  <ListGroup>
+		  	{ 'data' in repos ? renderRepoList(repos) : '' }
+		  </ListGroup>
 		</Card>
 	);
 }
