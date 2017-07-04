@@ -9,6 +9,8 @@ import UserCard from '../components/UserCard';
 import CommitList from '../components/CommitList';
 import injectTapEventPlugin from 'react-tap-event-plugin';
 
+import { getRepos } from '../actions/index.js'
+
 injectTapEventPlugin();
 
 class App extends Component {
@@ -55,4 +57,12 @@ class App extends Component {
   }
 }
 
-export default App;
+function mapStateToProps(state) {
+  const newState = {
+    repos: state.repos
+  }
+  console.log('Updated Store: ', newState)
+  return newState;
+}
+
+export default connect(mapStateToProps, { getRepos })(App);
