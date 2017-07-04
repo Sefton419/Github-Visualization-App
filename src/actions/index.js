@@ -3,7 +3,6 @@ import { GET_REPOS, GET_REPOS_SUCCESS, GET_REPOS_ERROR } from '../constants.js'
 import axios from 'axios';
 
 function getReposSuccess(repos) {
-	console.log('INSIDE')
 	return {
 		type: GET_REPOS_SUCCESS,
 		repos

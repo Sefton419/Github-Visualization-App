@@ -40,7 +40,7 @@ class App extends Component {
               <div className="container">
                 <Row>
                   <Col md={6} xs={6}>
-                    <RepoList repos={repos} />
+                    {repos !== null ? <RepoList repos={repos.repos} /> : 'Loading...' }
                   </Col>
                   <Col md={6} xs={6}>
                     <Row>

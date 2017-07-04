@@ -3,9 +3,10 @@ import ListGroupItem from 'react-bootstrap';
 import { Card } from 'material-ui';
 
 const RepoListItem = ({ repo }) => {
+	console.log('REPO: ', repo)
 	return (
-		<div>
-	    repo.name
+		<div key={repo.id}>
+	    {repo.name}
 	  </div>
 	)
 }

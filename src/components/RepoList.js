@@ -4,25 +4,35 @@ import { Card } from 'material-ui';
 
 import RepoListItem from './RepoListItem.js';
 
+import '../App.css';
+
 const RepoList = ({ repos }) => {
 
-	console.log('repos: ', repos)
+	console.log('LENGTH: ', Object.keys(repos).length)
 
 	const renderRepoList = (repos) => {
-		const repoListItems = repos.map( repo => {
-			return <RepoListItem repo={repo} />
-		});
+		let key = 0;
+		return repos.data.map( repo => {
+			key++;
+			console.log('repo: ', repo)
+			return (
+				<div key={key}>
+					<RepoListItem repo={repo} />
+				</div>
+			);
+		})
 	}
 
 	return (
 		<Card>
-		  <ListGroup>
-		  	Repositories
-		  	{ Object.keys(repos) > 0 ? renderRepoList(repos) : '' }
-		  </ListGroup>
-		);
+			<div className="container">
+			  <ListGroup>
+			  	Repositories
+			  	{ 'data' in repos ? renderRepoList(repos) : '' }
+			  </ListGroup>
+			</div>
 		</Card>
-	)
+	);
 }
 
 export default RepoList;
