@@ -21,6 +21,9 @@ class App extends Component {
   }
 
   render() {
+
+    const { repos } = this.props;
+
     return (
       <MuiThemeProvider>
         <Grid className="App">
@@ -37,7 +40,7 @@ class App extends Component {
               <div className="container">
                 <Row>
                   <Col md={6} xs={6}>
-                    <RepoList />
+                    <RepoList repos={repos} />
                   </Col>
                   <Col md={6} xs={6}>
                     <Row>

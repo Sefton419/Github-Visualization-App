@@ -1,11 +1,13 @@
-import { GET_REPOS } from '../constants.js';
+import { GET_REPOS, GET_REPOS_SUCCESS, GET_REPOS_ERROR } from '../constants.js';
 
 export default (state = {}, action) => {
+	console.log('action in reducer: ', action)
 	switch(action.type) {
-		case GET_REPOS:
-			const { data } = action;
+		case GET_REPOS_SUCCESS:
+		case GET_REPOS_ERROR:
+			const { repos } = action;
 			return {
-				data
+				repos
 			}
 		default: 
 			return state;

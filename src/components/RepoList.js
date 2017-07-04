@@ -1,12 +1,26 @@
 import React from 'react';
+import { ListGroup } from 'react-bootstrap';
 import { Card } from 'material-ui';
 
-const RepoList = () => {
+import RepoListItem from './RepoListItem.js';
+
+const RepoList = ({ repos }) => {
+
+	console.log('repos: ', repos)
+
+	const renderRepoList = (repos) => {
+		const repoListItems = repos.map( repo => {
+			return <RepoListItem repo={repo} />
+		});
+	}
+
 	return (
 		<Card>
-		  <div className="container">
-		    I am from RepoList
-		  </div>
+		  <ListGroup>
+		  	Repositories
+		  	{ Object.keys(repos) > 0 ? renderRepoList(repos) : '' }
+		  </ListGroup>
+		);
 		</Card>
 	)
 }
