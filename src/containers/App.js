@@ -34,11 +34,26 @@ class App extends Component {
                       </Card>
                     </Col>
                     <Col md={6} xs={6}>
-                      <Card>
-                        <div className="container">
-                          <CommitList />
-                        </div>
-                      </Card>
+                      <Row>
+                        <Col md={12} xs={12}> 
+                          <div className="margin-bottom">
+                            <Card>
+                              <div className="container">
+                                <CommitList />
+                              </div>
+                            </Card>
+                          </div>
+                        </Col>
+                      </Row>
+                      <Row>
+                        <Col md={12} xs={12}> 
+                          <Card>
+                            <div className="container">
+                              <CommitList />
+                            </div>
+                          </Card>
+                        </Col>
+                      </Row>
                     </Col>
                   </Row>
                 </div>
