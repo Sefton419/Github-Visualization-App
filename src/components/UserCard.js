@@ -3,7 +3,6 @@ import { Card } from 'material-ui';
 import { Row, Col, Thumbnail } from 'react-bootstrap';
 
 const UserCard = ({ repos }) => {
-	console.log('repos: ', repos)
 	return (
 		<Card>
 			<Row>

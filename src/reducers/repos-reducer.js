@@ -1,4 +1,4 @@
-import { GET_REPOS, GET_REPOS_SUCCESS, GET_REPOS_ERROR } from '../constants.js';
+import { GET_REPOS_SUCCESS } from '../constants.js';
 
 export default (state = null, action) => {
 	switch(action.type) {

@@ -1,11 +1,10 @@
 import React from 'react';
-import { Card } from 'material-ui';
 import { ListGroup, FormGroup, FormControl, ControlLabel } from 'react-bootstrap';
 
 import CommitListItem from './CommitListItem.js'
 import '../App.css';
 
-const CommitList = ({ commits }) => {
+const CommitList = ({ commits, state }) => {
 
 	const renderCommitList = (commits) => {
 		let key = 0;
@@ -17,6 +16,8 @@ const CommitList = ({ commits }) => {
 						<CommitListItem commit={commit} keyVal={key} />
 					</div>
 				);
+			} else {
+				return '';
 			}
 		})
 	}

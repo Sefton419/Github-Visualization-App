@@ -1,4 +1,4 @@
-import { GET_COMMITS, GET_COMMITS_SUCCESS, GET_COMMITS_ERROR } from '../constants.js';
+import { GET_COMMITS_SUCCESS } from '../constants.js';
 
 export default (state = null, action) => {
 	switch(action.type) {

@@ -1,6 +1,5 @@
 import React from 'react';
 import { ListGroupItem } from 'react-bootstrap';
-import { Card } from 'material-ui';
 
 const RepoListItem = ({ repo, getCommits }) => {
 	return (

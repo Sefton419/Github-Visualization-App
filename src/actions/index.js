@@ -1,5 +1,5 @@
 import { ROOT_URL } from '../config.js'
-import { GET_REPOS, GET_REPOS_SUCCESS, GET_REPOS_ERROR, GET_COMMITS, GET_COMMITS_SUCCESS, GET_COMMITS_ERROR } from '../constants.js'
+import { GET_REPOS_SUCCESS, GET_REPOS_ERROR, GET_COMMITS_SUCCESS, GET_COMMITS_ERROR } from '../constants.js'
 import axios from 'axios';
 
 function getReposSuccess(repos) {
@@ -19,7 +19,7 @@ function getReposError(err) {
 export function getRepos(username) {
 	return function(dispatch) {
 		// template strings are a convenient new way to concatenate strings without previous baggage
-		const data = axios.get(`${ROOT_URL}users/${username}/repos`)
+		axios.get(`${ROOT_URL}users/${username}/repos`)
 		.then((resp) => {
 			dispatch(getReposSuccess(resp));
 		})
@@ -45,7 +45,7 @@ function getCommitsError(err) {
 
 export function getCommits(username, repo) {
 	return function(dispatch) {
-		const data = axios.get(`${ROOT_URL}repos/${username}/${repo}/commits`)
+		axios.get(`${ROOT_URL}repos/${username}/${repo}/commits`)
 		.then((resp) => {
 			dispatch(getCommitsSuccess(resp));
 		})

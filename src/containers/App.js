@@ -20,14 +20,14 @@ class App extends Component {
 
     this.state = {
       search: null,
-      commitQueryString: null
+      commitQueryStrings: null
     };
-
   }
 
   componentWillMount() {
     const { getRepos } = this.props;
     getRepos('sefton419');
+    this.setState({commitQueryStrings: null})
   }
 
   // object method shorthand syntax only requires the method name, parenthesis, and the function body - no need for a key
@@ -61,7 +61,6 @@ class App extends Component {
       return (
         <CommitList 
           commits={commits.commits}
-          getCommits={getCommits} 
         /> 
       ) 
     } else {
@@ -73,7 +72,7 @@ class App extends Component {
 
     // Object destructuring takes away the need to repeat the usage of 'this.props' or 'this'
     const { injectRepoList, injectUserCard, injectCommitList } = this
-    const { repos, commits, getCommits, createCommitQueryString } = this.props;
+    const { repos, commits, getCommits } = this.props;
 
     return (
       <MuiThemeProvider>
@@ -118,12 +117,10 @@ class App extends Component {
 }
 
 function mapStateToProps(state) {
-  const newState = {
+  return {
     repos: state.repos,
     commits: state.commits
   }
-  console.log('Updated Store: ', newState)
-  return newState;
 }
 
 export default connect(mapStateToProps, { getRepos, getCommits })(App);

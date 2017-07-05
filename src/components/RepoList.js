@@ -1,6 +1,5 @@
 import React from 'react';
 import { ListGroup } from 'react-bootstrap';
-import { Card } from 'material-ui';
 
 import RepoListItem from './RepoListItem.js';
 
