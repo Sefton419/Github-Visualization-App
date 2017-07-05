@@ -13,6 +13,7 @@ import { getRepos, getCommits } from '../actions/index.js'
 
 injectTapEventPlugin();
 
+// the new class syntax in ES6 allows us to use familiar Java-like class syntax. Easier to understand.
 class App extends Component {
   constructor(props) {
     super(props)
@@ -29,6 +30,7 @@ class App extends Component {
     getRepos('sefton419');
   }
 
+  // object method shorthand syntax only requires the method name, parenthesis, and the function body - no need for a key
   injectRepoList(repos, getCommits) {
     if (repos !== null) {
       return (
@@ -63,12 +65,14 @@ class App extends Component {
         /> 
       ) 
     } else {
-      return 'Loading...';
+      return 'Click a repo to render a list of commits...';
     }
   }
 
   render() {
 
+    // Object destructuring takes away the need to repeat the usage of 'this.props' or 'this'
+    const { injectRepoList, injectUserCard, injectCommitList } = this
     const { repos, commits, getCommits, createCommitQueryString } = this.props;
 
     return (
@@ -87,19 +91,19 @@ class App extends Component {
               <div className="container">
                 <Row>
                   <Col md={6} xs={6}>
-                    { this.injectRepoList(repos, getCommits) }
+                    { injectRepoList(repos, getCommits) }
                   </Col>
                   <Col md={6} xs={6}>
                     <Row>
                       <Col md={12} xs={12}> 
                         <div className="margin-bottom">
-                          { this.injectUserCard(repos) }
+                          { injectUserCard(repos) }
                         </div>
                       </Col>
                     </Row>
                     <Row>
                       <Col md={12} xs={12}>
-                        { this.injectCommitList(commits) }
+                        { injectCommitList(commits) }
                       </Col>
                     </Row>
                   </Col>

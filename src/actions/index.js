@@ -18,6 +18,7 @@ function getReposError(err) {
 
 export function getRepos(username) {
 	return function(dispatch) {
+		// template strings are a convenient new way to concatenate strings without previous baggage
 		const data = axios.get(`${ROOT_URL}users/${username}/repos`)
 		.then((resp) => {
 			dispatch(getReposSuccess(resp));
