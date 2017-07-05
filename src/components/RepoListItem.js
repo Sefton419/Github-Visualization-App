@@ -4,7 +4,7 @@ import { Card } from 'material-ui';
 
 const RepoListItem = ({ repo, getCommits }) => {
 	return (
-		<div>
+		<div className="margin-list">
 			<ListGroupItem 
 				onClick={function() {
 					getCommits(repo.owner.login, repo.name)

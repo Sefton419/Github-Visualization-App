@@ -14,15 +14,62 @@ import { getRepos, getCommits } from '../actions/index.js'
 injectTapEventPlugin();
 
 class App extends Component {
+  constructor(props) {
+    super(props)
+
+    this.state = {
+      search: null,
+      commitQueryString: null
+    };
+
+  }
 
   componentWillMount() {
     const { getRepos } = this.props;
     getRepos('sefton419');
   }
 
+  injectRepoList(repos, getCommits) {
+    if (repos !== null) {
+      return (
+        <RepoList 
+          repos={repos.repos} 
+          getCommits={getCommits}
+        /> 
+      ) 
+    } else {
+      return 'Loading...';
+    }
+  }
+
+  injectUserCard(repos) {
+    if (repos !== null) {
+      return (
+        <UserCard 
+          repos={repos.repos} 
+        /> 
+      ) 
+    } else {
+      return 'Loading...';
+    }
+  }
+
+  injectCommitList(commits) {
+    if (commits !== null) {
+      return (
+        <CommitList 
+          commits={commits.commits}
+          getCommits={getCommits} 
+        /> 
+      ) 
+    } else {
+      return 'Loading...';
+    }
+  }
+
   render() {
 
-    const { repos, commits, getCommits } = this.props;
+    const { repos, commits, getCommits, createCommitQueryString } = this.props;
 
     return (
       <MuiThemeProvider>
@@ -40,19 +87,19 @@ class App extends Component {
               <div className="container">
                 <Row>
                   <Col md={6} xs={6}>
-                    { repos !== null ? <RepoList repos={repos.repos} getCommits={getCommits} /> : 'Loading...' }
+                    { this.injectRepoList(repos, getCommits) }
                   </Col>
                   <Col md={6} xs={6}>
                     <Row>
                       <Col md={12} xs={12}> 
                         <div className="margin-bottom">
-                          <UserCard />
+                          { this.injectUserCard(repos) }
                         </div>
                       </Col>
                     </Row>
                     <Row>
                       <Col md={12} xs={12}>
-                        { commits !== null ? <CommitList commits={commits.commits} /> : 'Click a repo for a list of commits...' }
+                        { this.injectCommitList(commits) }
                       </Col>
                     </Row>
                   </Col>

@@ -3,15 +3,17 @@ import { Card } from 'material-ui';
 import { ListGroup, FormGroup, FormControl, ControlLabel } from 'react-bootstrap';
 
 import CommitListItem from './CommitListItem.js'
+import '../App.css';
 
 const CommitList = ({ commits }) => {
+
 	const renderCommitList = (commits) => {
 		let key = 0;
 		return commits.data.map( commit => {
 			key++;
 			if (key < 21) {
 				return (
-					<div key={key}>
+					<div className="margin-list" key={key}>
 						<CommitListItem commit={commit} keyVal={key} />
 					</div>
 				);
