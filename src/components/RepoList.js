@@ -6,9 +6,7 @@ import RepoListItem from './RepoListItem.js';
 
 import '../App.css';
 
-const RepoList = ({ repos }) => {
-
-	console.log('LENGTH: ', Object.keys(repos).length)
+const RepoList = ({ repos, getCommits }) => {
 
 	const renderRepoList = (repos) => {
 		let key = 0;
@@ -16,18 +14,18 @@ const RepoList = ({ repos }) => {
 			key++;
 			return (
 				<div key={key}>
-					<RepoListItem repo={repo} />
+					<RepoListItem repo={repo} getCommits={getCommits} />
 				</div>
 			);
 		})
 	}
 
 	return (
-		<Card>
+
 		  <ListGroup>
 		  	{ 'data' in repos ? renderRepoList(repos) : '' }
 		  </ListGroup>
-		</Card>
+
 	);
 }
 

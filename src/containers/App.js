@@ -9,7 +9,7 @@ import UserCard from '../components/UserCard';
 import CommitList from '../components/CommitList';
 import injectTapEventPlugin from 'react-tap-event-plugin';
 
-import { getRepos } from '../actions/index.js'
+import { getRepos, getCommits } from '../actions/index.js'
 
 injectTapEventPlugin();
 
@@ -22,7 +22,7 @@ class App extends Component {
 
   render() {
 
-    const { repos } = this.props;
+    const { repos, commits, getCommits } = this.props;
 
     return (
       <MuiThemeProvider>
@@ -40,7 +40,7 @@ class App extends Component {
               <div className="container">
                 <Row>
                   <Col md={6} xs={6}>
-                    {repos !== null ? <RepoList repos={repos.repos} /> : 'Loading...' }
+                    { repos !== null ? <RepoList repos={repos.repos} getCommits={getCommits} /> : 'Loading...' }
                   </Col>
                   <Col md={6} xs={6}>
                     <Row>
@@ -52,7 +52,7 @@ class App extends Component {
                     </Row>
                     <Row>
                       <Col md={12} xs={12}>
-                        <CommitList />
+                        { commits !== null ? <CommitList commits={commits.commits} /> : 'Click a repo for a list of commits...' }
                       </Col>
                     </Row>
                   </Col>
@@ -68,10 +68,11 @@ class App extends Component {
 
 function mapStateToProps(state) {
   const newState = {
-    repos: state.repos
+    repos: state.repos,
+    commits: state.commits
   }
   console.log('Updated Store: ', newState)
   return newState;
 }
 
-export default connect(mapStateToProps, { getRepos })(App);
+export default connect(mapStateToProps, { getRepos, getCommits })(App);

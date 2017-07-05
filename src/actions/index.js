@@ -1,5 +1,5 @@
 import { ROOT_URL } from '../config.js'
-import { GET_REPOS, GET_REPOS_SUCCESS, GET_REPOS_ERROR } from '../constants.js'
+import { GET_REPOS, GET_REPOS_SUCCESS, GET_REPOS_ERROR, GET_COMMITS, GET_COMMITS_SUCCESS, GET_COMMITS_ERROR } from '../constants.js'
 import axios from 'axios';
 
 function getReposSuccess(repos) {
@@ -9,10 +9,10 @@ function getReposSuccess(repos) {
 	}
 }
 
-function getReposError(repos) {
+function getReposError(err) {
 	return {
 		type: GET_REPOS_ERROR,
-		repos
+		err
 	}
 }
 
@@ -22,9 +22,35 @@ export function getRepos(username) {
 		.then((resp) => {
 			dispatch(getReposSuccess(resp));
 		})
-		.catch((reason) => {
-			dispatch(getReposError(reason));
+		.catch((err) => {
+			dispatch(getReposError(err));
 		})
+	}
+}
+
+function getCommitsSuccess(commits) {
+	return {
+		type: GET_COMMITS_SUCCESS,
+		commits
+	}
+}
+
+function getCommitsError(err) {
+	return {
+		type: GET_COMMITS_ERROR,
+		err
+	}
+}
+
+export function getCommits(username, repo) {
+	return function(dispatch) {
+		const data = axios.get(`${ROOT_URL}repos/${username}/${repo}/commits`)
+		.then((resp) => {
+			dispatch(getCommitsSuccess(resp));
+		})
+		.catch((err) => {
+			dispatch(getCommitsError(err));
+		});
 	}
 }
 

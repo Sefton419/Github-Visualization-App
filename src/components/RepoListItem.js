@@ -2,11 +2,18 @@ import React from 'react';
 import { ListGroupItem } from 'react-bootstrap';
 import { Card } from 'material-ui';
 
-const RepoListItem = ({ repo }) => {
+const RepoListItem = ({ repo, getCommits }) => {
 	console.log('REPO: ', repo)
 	return (
-		<div key={repo.id}>
-			<ListGroupItem> {repo.name} </ListGroupItem>
+		<div>
+			<ListGroupItem 
+				onClick={function() {
+					getCommits(repo.owner.login, repo.name)
+				}}
+				header={repo.name}
+			> 
+				{repo.description} 
+			</ListGroupItem>
 	  </div>
 	)
 }
