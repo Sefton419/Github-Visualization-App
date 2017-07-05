@@ -3,7 +3,6 @@ import { ListGroupItem } from 'react-bootstrap';
 import { Card } from 'material-ui';
 
 const RepoListItem = ({ repo, getCommits }) => {
-	console.log('REPO: ', repo)
 	return (
 		<div>
 			<ListGroupItem 

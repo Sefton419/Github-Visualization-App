@@ -2,11 +2,11 @@ import React from 'react';
 import { ListGroupItem } from 'react-bootstrap';
 import { Card } from 'material-ui';
 
-const CommitListItem = ({ commit }) => {
+const CommitListItem = ({ commit, keyVal }) => {
 	return (
 		<div>
 			<ListGroupItem 
-				header={commit.commit.author.name}
+				header={`${keyVal}. ${commit.commit.author.name}`}
 			> 
 				{commit.commit.message} 
 			</ListGroupItem>
